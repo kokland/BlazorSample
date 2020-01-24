@@ -1,0 +1,10 @@
+﻿@page "/counter"
+@using BlazorSample.Data
+
+@inject ICounterService _counterService
+
+<h1>Counter, customized</h1>
+
+<p>Current count: @_counterService.Count()</p>
+
+<button class="btn btn-primary" @onclick="_counterService.Increment">Click me</button>

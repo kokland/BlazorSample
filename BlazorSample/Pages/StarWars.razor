@@ -1,0 +1,28 @@
+﻿@page "/starwars"
+@using BlazorSample.Data
+
+@inject StarWarsApiService StarWarsService;
+
+@if(results == null)
+{
+    <p><em>loading...</em></p>
+} else
+{
+
+<ul>
+    @foreach(var character in results)
+    {
+        <li>@character.name - @character.gender</li>
+    }
+</ul>
+}
+@code {
+
+    List<Result> results;
+
+    protected override async Task OnInitializedAsync()
+    {
+        results = await StarWarsService.GetContactsAsync();
+    }
+
+}
