@@ -6,28 +6,9 @@ using Newtonsoft.Json;
 
 namespace BlazorSample.Data
 {
-    /*public class StarWarsService2
-    {
-        public IEnumerable<Character> Characters { get; set; }
-
-
-        public async Task<StarwarsApiResult> GetCharacters()
-        {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri("https://swapi.co/");
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-
-            var json = await client.GetStringAsync("api/people");
-            var data = JsonConvert.DeserializeObject<StarwarsApiResult>(json);
-
-            return data;
-        }
-
-    }*/
-
     public class StarWarsApiService
     {
-        public HttpClient _httpClient;
+        private readonly HttpClient _httpClient;
 
         public StarWarsApiService(HttpClient client)
         {

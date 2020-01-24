@@ -3,14 +3,14 @@
 
 @inject StarWarsApiService StarWarsService;
 
-@if(results == null)
+@if(_results == null)
 {
     <p><em>loading...</em></p>
 } else
 {
 
 <ul>
-    @foreach(var character in results)
+    @foreach(var character in _results)
     {
         <li>@character.name - @character.gender</li>
     }
@@ -18,11 +18,11 @@
 }
 @code {
 
-    List<Result> results;
+    List<Result> _results;
 
     protected override async Task OnInitializedAsync()
     {
-        results = await StarWarsService.GetContactsAsync();
+        _results = await StarWarsService.GetContactsAsync();
     }
 
 }
