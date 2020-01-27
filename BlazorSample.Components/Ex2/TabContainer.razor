@@ -1,0 +1,27 @@
+﻿@using BlazorSample.Components.Ex1
+
+
+<CascadingValue Value="this">
+    <ul class="nav nav-tabs">
+        @ChildContent
+    </ul>
+</CascadingValue>
+
+<div class="nav-tabs-body">
+    @SelectedTab?.ChildContent
+</div>
+
+
+@code {
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    public ITab SelectedTab { get; private set; }
+
+    public void SetSelectedTab(ITab selectedTab)
+    {
+        SelectedTab = selectedTab;
+        StateHasChanged();
+    }
+}

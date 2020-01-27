@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@implements BlazorSample.Components.Ex1.ITab
+
+<li>
+    <a @onclick="SetSelectedTab" class="nav-link @TitleCssClass">@Title</a>
+</li>
+
+
+@functions {
+
+    [CascadingParameter] TabContainer TabContainer { get; set; }
+
+    [Parameter] public string Title { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+    private bool SelectedTab { get; set; }
+
+    string TitleCssClass => TabContainer.SelectedTab == this ? "active" : null;
+
+
+    void SetSelectedTab()
+    {
+        TabContainer.SetSelectedTab(this);
+    }
+}
